@@ -1,0 +1,23 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_zero
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+# verifier:
+#   name: inspec
+
+platforms:
+- name: oraclelinux-rhel
+  driver_config:
+     image: oraclelinux:6
+     platform: rhel
+
+suites:
+  - name: default
+    run_list:
+      - recipe[apache::default]
+    attributes:
